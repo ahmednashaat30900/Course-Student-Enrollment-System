@@ -187,7 +187,7 @@ class Student(db.Model):
      student_password = db.Column(db.String(120), unique=True, nullable=False)
      student_image = db.Column(db.LargeBinary)
      student_phone = db.Column(db.String(50), unique=True)
-     course_id = db.Column(db.Integer, db.ForeignKey('courses'), nullable=False)
+     
 
 
 class categories(db.Model):
@@ -203,7 +203,7 @@ class courses(db.Model):
      course_image = db.Column(db.LargeBinary)
      total_course_hours = db.Column(db.String(120), nullable=False)
      course_instructor = db.Column(db.String(120), nullable=False)
-     students = db.relationship('Student', backref='course')
+    
 
  
 
