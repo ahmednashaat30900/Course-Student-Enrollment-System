@@ -1,0 +1,1 @@
+url_for('static', filename='profile_pics/' + current_user.student_image)
