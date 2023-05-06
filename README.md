@@ -15,6 +15,11 @@ The sysyem has two modes of operations admin mode and user mode, admin mode resb
 by adding new courses or update already existing course, also he can delete any course or user from the system.
 User mode can register in the system and browse courses and select the desired courses to enroll and also he can update his profile information
 
+## System interface 
+System designed to be responsive at all screens
+![landing_Page](https://user-images.githubusercontent.com/65959637/236645226-e6610dca-146d-4147-940a-0cf653b25374.png)
+![Screenshot 2023-05-03 213353](https://user-images.githubusercontent.com/65959637/236645234-fdc61529-ee9e-486a-a9cb-e178cc3a159b.png)
+
 
 
 ## System implementation 
