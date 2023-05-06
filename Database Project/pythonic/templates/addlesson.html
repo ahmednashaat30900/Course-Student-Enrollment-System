@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+    <title>Add Lesson</title>
+</head>
+<body>
+</body>
+</html>
+
+<body class="flex bg-gray-100 min-h-screen">
+  <div class="flex-grow text-gray-800">
+<!--------------------------------------------  Header Nav --------------------------------------------------------------------->
+    <header class="flex items-center h-20 px-6 sm:px-10 bg-white">
+      <button class="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
+      </button> 
+      <div class="flex flex-shrink-0 items-center ml-auto">
+        <a href="{{ url_for('admin') }}"> 
+        <button class="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
+         
+          <div class="hidden md:flex md:flex-col md:items-end md:leading-tight">
+            <span class="font-semibold">Ahmed Nashaat</span>
+            <span class="text-sm text-gray-600">Admin</span>
+          </div>
+          <span class="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
+            <img src="{{url_for('static', filename='Admin.png')}}" alt="user profile photo" class="h-full w-full object-cover">
+          </span>
+        </button>
+        </a>
+        <div class="border-l pl-3 ml-3 space-x-1">     
+          <a href="{{ url_for('logout') }}">
+          <button class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
+            <span class="sr-only">Log out</span>
+            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+</svg>
+          </button>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main class="p-6 sm:p-10 space-y-6">    
+      <section class="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20">
+
+<!-----------------------------------------------------Add Lesson Form ----------------------------------------------------------------------->   
+        <form method="POST" action="{{url_for('addlesson', course_id=course.course_id)}}" enctype="multipart/form-data">
+            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <div>
+                    <label class="text-white dark:text-gray-200" for="course_name">Lesson Name</label>
+                    <input required id="lesson_name" name="lesson_name" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+            
+              </div>
+                <div>
+                    <label class="block text-sm font-medium text-white">
+                    File
+                  </label>
+                  <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                    <div class="space-y-1 text-center">
+                      <div class="flex text-sm text-gray-600">
+                        <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                          <span class="">Upload a file</span>
+                          <input id="file-upload" name="course_image" type="file" class="sr-only" value="https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.fsm.ac.in%2Fblog%2Fwp-content%2Fuploads%2F2022%2F08%2Fml-e1610553826718.jpg&tbnid=MljwM1234Xl_pM&vet=12ahUKEwjSrszvmc3-AhWZnycCHWpzClgQMygAegUIARDbAQ..i&imgrefurl=https%3A%2F%2Fwww.fsm.ac.in%2Fblog%2Fan-introduction-to-machine-learning-its-importance-types-and-applications%2F&docid=d93UJTpTprg-EM&w=1000&h=612&q=machine%20learning&ved=2ahUKEwjSrszvmc3-AhWZnycCHWpzClgQMygAegUIARDbAQ">
+                        </label>
+                        <p class="pl-1 text-white">or drag and drop</p>
+                      </div>               
+                    </div>
+                  </div>
+                </div>
+            <div class="flex justify-end mt-6">
+                <input type="submit" value="Save" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">
+            </div>
+        </form>
+    </section>     
+</div>
+      </section>
+      
+    </main>
+  </div>
+</body>

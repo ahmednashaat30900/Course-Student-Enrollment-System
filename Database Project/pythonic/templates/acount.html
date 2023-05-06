@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+    {{super() }}
+
+    <div class="h-full bg-gray-200 p-8">
+        
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flex p-4 mb-4 text-xl text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          
+            <div>
+              <span class="font-medium">{{ messages}}<span> 
+            </div>
+          </div>
+        
+        {% endif %}
+      {% endwith %}
+        <div class="bg-white rounded-lg shadow-xl pb-8">
+            
+<!--------------------------------------------Account Profile Picture --------------------------------------------------------------->
+            <div class="w-full h-[250px]">
+                <img src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg" class="w-full h-full rounded-tl-lg rounded-tr-lg">
+            </div>
+            <div class="flex flex-col items-center -mt-20">
+                <img src="{{ student_image }}" class="w-40 border-4 border-white rounded-full">
+                <div class="flex items-center space-x-2 mt-2">
+                    <p class="text-2xl">{{ current_user.student_username }}</p>
+                    <span class="bg-blue-500 rounded-full p-1" title="Verified">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-100 h-2.5 w-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </span>
+                </div>
+                <p class="text-gray-700">{{ current_user.student_headline }}</p>
+              
+            </div>
+            <div class="flex-1 flex flex-col items-center lg:items-end justify-end px-8 mt-2">
+                <div class="flex items-center space-x-4 mt-2">
+                    <a href="{{url_for('updateacount')}}">
+                    <button class="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path>
+                        </svg>
+                        <span>Edit Profile</span>
+                    </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+<!-------------------------------------------Personal Information Section ----------------------------------------------------->
+        <div class="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
+            <div class="w-full flex flex-col 2xl:w-1/3">
+                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                    <h4 class="text-xl text-gray-900 font-bold">Personal Info</h4>
+                    <ul class="mt-2 text-gray-700">
+                        <li class="flex border-b py-2">
+                            <span class="font-bold w-24">username</span>
+                            <span class="text-gray-700">{{ current_user.student_username }}</span>
+                        </li>
+                        <li class="flex border-b py-2">
+                            <span class="font-bold w-24">Email:</span>
+                            <span class="text-gray-700">{{ current_user.student_email }}</span>
+                        </li>
+                        <li class="flex border-b py-2">
+                            <span class="font-bold w-24">Mobile:</span>
+                            {{ current_user.student_mobil }}                          
+                        </li>              
+                    </ul>
+                </div>         
+            </div>
+<!--------------------------------------------About Section -------------------------------------------------------->
+            <div class="flex flex-col w-full 2xl:w-2/3">
+                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                    <h4 class="text-xl text-gray-900 font-bold">About</h4>
+                    <p class="mt-2 text-gray-700">{{ current_user.student_about }}</p>
+                </div>         
+            </div>
+        </div>
+<!----------------------------------------Courses which user enrolled in -------------------------------------------------------------->
+        <div class="bg-white rounded-lg shadow-xl p-8">
+            <div class="flex items-center justify-between">
+                <h4 class="text-xl text-gray-900 font-bold">Courses ( {{ enrollment_count }} )</h4>     
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-8 mt-8">        
+                {% for course in Courses %}
+                
+                <a href="{{url_for('course', course_id=course.course_id)}}" class="flex flex-col items-center justify-center text-gray-800 hover:text-blue-600" title="View Profile">
+                    <img src="{{ url_for('static', filename='courses_pics/' + course.course_image)}}" class="w-16 rounded-full">
+                    <p class="text-center font-bold text-sm mt-1">{{ course.course_name }}</p>
+                    <p class="text-xs text-gray-500 text-center">{{ course.course_category }}</p>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+ {% endblock %}
