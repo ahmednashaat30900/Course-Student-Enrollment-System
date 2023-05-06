@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% block content %}
+    {{super() }}
+    
+    <div class="h-full bg-gray-200 p-8">
+     
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flex p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400" role="alert">
+            <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+          
+            <div>
+              <span class="font-medium">{{ messages}}<span> 
+            </div>
+          </div>
+        
+        {% endif %}
+      {% endwith %}
+            <div class=" text-left flex-1 flex flex-col items-center lg:items-end justify-end px-8 mt-2">
+                
+                <div class="flex items-center space-x-4 mt-2">
+                    
+                  <a href="{{url_for('enroll', course_id=course.course_id)}}">
+                    <button class="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path>
+                        </svg>
+                        <span>Enrollment</span>
+                    </button>
+                    </a>
+                 
+                </div>
+            </div>
+        
+<!------------------------------------------------------------------------------------------------>
+        <div class="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
+            <div class="w-full flex flex-col 2xl:w-1/3">
+                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                    <h4 class="text-xl text-gray-900 font-bold">Basic Information</h4>
+                    <ul class="mt-2 text-gray-700">
+                        <li class="flex border-b py-2">
+                            <span class="font-bold w-60">Course Name: </span>
+                            <span class="text-gray-700">{{ course.course_name }}</span>
+                        </li>
+                        <li class="flex border-b py-2">
+                            <span class="font-bold w-60">Course Category: </span>
+                            <span class="text-gray-700">{{ course.course_category }}</span>
+                        </li>
+                        <li class="flex border-b py-2">
+                            <span class="font-bold w-60">Course Instructor: </span>
+                            <span class="text-gray-700"> {{ course.course_instructor }}</span>
+                            
+                        </li>       
+                        <li class="flex items-center border-b py-2 space-x-2">
+                            <span class="font-bold w-60">Total Course Hours: </span>
+                            <span class="text-gray-700">  {{ course.total_course_hours}}</span>
+                        </li>
+                        <li class="flex items-center border-b py-2 space-x-2">
+                            <span class="font-bold w-60">Course Description: </span>
+                            <span class="text-gray-700">  {{ course.course_description}}</span>
+                         
+                            
+                        </li>
+                        <li class="flex items-center border-b py-2 space-x-2">
+                            <span class="font-bold w-60">Course syllabus: </span>
+                            <span class="text-gray-700">  {{ course.course_syllabus}}</span>
+                         
+                            
+                        </li>
+                    </ul>
+                </div>         
+            </div>
+
+
+            <div class="flex flex-col w-full 2xl:w-2/3 ">
+                <div class="flex-1 bg-white rounded-lg shadow-xl p-8">
+                    <h4 class="text-xl text-gray-900 font-bold">Lessons</h4>
+
+                    <div class="sm:px-6 w-full">
+                                    <div class="px-4 md:px-10 py-4 md:py-7">
+                                        <div class="flex items-center justify-between">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
+                                     
+                                        <div class="mt-7 overflow-x-auto">
+                                            {% for lesson in Lessons %}
+
+                                            <table class=" w-full whitespace-nowrap">
+                                                <tbody>
+
+                                                    <tr class="h-3 ">
+                                                    <tr tabindex="0" class="ml-auto focus:outline-none  h-16 border border-blue-400 rounded">
+                                                     
+                                                        <td  class="focus:text-indigo-600 ">
+                                                            <div class="flex items-center pl-5">
+                                                                <p class="text-base font-lg font-bold leading-none text-gray-700 mr-2">{{lesson.lesson_name}}</p>
+                                                            </div>
+                                                        </td>     
+                                                      
+                                                        <td class="pl-4  text-right">
+                                                            <button class=" ml-auto focus:ring-2 focus:ring-offset-2 focus:ring-red-300 text-sm leading-none text-gray-600 py-3 px-5 bg-gray-100 rounded hover:bg-blue-200 focus:outline-none">View</button>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                </div>         
+            </div>
+        </div>
+       
+<!------------------------------------------------------------------------------------------------------>
+<div class="bg-white rounded-lg shadow-xl p-8">
+    <div class="flex items-center justify-between">
+        <h4 class="text-xl text-gray-900 font-bold">Students Enrolled in Course ( {{ enrollment_count }} )</h4>
+       
+    </div>
+   
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-8 mt-8">
+      
+        {% for student in students %}
+        
+        <a href="" class="flex flex-col items-center justify-center text-gray-800 hover:text-blue-600" title="View Profile">
+            <img src="{{ url_for('static', filename='profile_pics/' + student.student_image)}}" class="w-16 rounded-full">
+            <p class="text-center font-bold text-sm mt-1">{{ student.student_username }}</p>
+            <p class="text-xs text-gray-500 text-center">{{ student.student_headline }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<!-------------------------------------------------------------------------------------------------------->
+    </div>
+ {% endblock %}
