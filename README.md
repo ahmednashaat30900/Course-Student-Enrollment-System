@@ -38,22 +38,25 @@ tool that translates Python classes to tables on relational
 databases and automatically converts function calls to SQL
 statements.
 2. Flask-Login
-Flask-Login provides user session management for Flask. It
+ provides user session management for Flask. It
 handles the common tasks of logging in, logging out, and
 remembering your users' sessions over extended periods of
 time.
 
 3. WTForms
-WTForms is a Python library that provides flexible web
+ is a Python library that provides flexible web
 form rendering. It can used to render text fields, text areas,
 password fields, radio buttons, and others. WTForms also
 provides powerful data validation using different
 validators, which validate that the data the user submits
 meets certain criteria you define.
 4. Flask-bcrypt
-Flask bcrypt is a flask extension that enables users with
+ is a flask extension that enables users with
 utilities related to bcrypt hashing. The bcrypt is a hashing
 function for password that is based on the Blowfish cipher
 and incorporates salt for protecting the application against
 any rainbow table attacks. We know, too many new
 terminologies.
+
+## Website Link
+https://akmcourses.pythonanywhere.com/
